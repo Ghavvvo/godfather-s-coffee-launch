@@ -244,20 +244,7 @@ function Index() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4">
-            {[
-              { src: productFront.url, alt: "Vista frontal del paquete", label: "Frente" },
-              { src: productSide.url, alt: "Vista lateral del paquete", label: "Costado" },
-              { src: productBack.url, alt: "Vista trasera del paquete", label: "Atrás" },
-            ].map((v) => (
-              <div key={v.label} className="flex flex-col items-center gap-3">
-                <div className="relative w-full aspect-[3/4] bg-background/60 border border-gold/20 overflow-hidden">
-                  <img src={v.src} alt={v.alt} className="absolute inset-0 w-full h-full object-contain" />
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80">{v.label}</span>
-              </div>
-            ))}
-          </div>
+          <ProductGallery />
         </div>
       </section>
 
