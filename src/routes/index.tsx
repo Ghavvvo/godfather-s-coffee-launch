@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import heroAsset from "@/assets/hero.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
+import logoGoldAsset from "@/assets/logo-gold.png.asset.json";
 import productFront from "@/assets/product-front.png.asset.json";
 import productSide from "@/assets/product-side.png.asset.json";
 import productBack from "@/assets/product-back.png.asset.json";
