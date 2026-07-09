@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import heroAsset from "@/assets/hero.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
+import logoGoldAsset from "@/assets/logo-gold.png.asset.json";
 import productFront from "@/assets/product-front.png.asset.json";
 import productSide from "@/assets/product-side.png.asset.json";
 import productBack from "@/assets/product-back.png.asset.json";
@@ -121,7 +122,7 @@ function Index() {
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="El Café del Padrino" className="h-10 w-auto" />
+            <img src={logoGoldAsset.url} alt="El Café del Padrino" className="h-14 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#historia" className="hover:text-gold transition-colors">Historia</a>
@@ -302,9 +303,9 @@ function Index() {
           </h2>
           <a
             href="mailto:hello@thegodfatherscoffee.com"
-            className="inline-flex items-center gap-3 font-display text-2xl md:text-4xl text-gold hover:text-gold-bright transition-colors border-b border-gold/40 pb-2"
+            className="inline-flex items-center gap-3 font-display text-lg sm:text-2xl md:text-4xl text-gold hover:text-gold-bright transition-colors border-b border-gold/40 pb-2 break-all"
           >
-            <Mail className="w-6 h-6" strokeWidth={1.5} />
+            <Mail className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.5} />
             hello@thegodfatherscoffee.com
           </a>
           <div className="mt-12 inline-flex items-center gap-2 text-muted-foreground uppercase tracking-[0.3em] text-xs">
@@ -317,7 +318,7 @@ function Index() {
       {/* Footer */}
       <footer className="border-t border-gold/30 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <img src={logoAsset.url} alt="El Café del Padrino" className="h-10 w-auto opacity-80" />
+          <img src={logoAsset.url} alt="El Café del Padrino" className="h-20 w-auto opacity-80" />
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
             © 2026 El Café del Padrino · Gentleman's Roast
           </p>
