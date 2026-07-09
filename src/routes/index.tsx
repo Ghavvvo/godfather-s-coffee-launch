@@ -3,6 +3,9 @@ import { motion } from "motion/react";
 import { Coffee, Snowflake, Mail, MapPin } from "lucide-react";
 import heroAsset from "@/assets/hero.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
+import productFront from "@/assets/product-front.png.asset.json";
+import productSide from "@/assets/product-side.png.asset.json";
+import productBack from "@/assets/product-back.png.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -90,19 +93,7 @@ function Index() {
               </p>
             </div>
 
-            <h1 className="font-display text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.85] tracking-tight text-foreground">
-              El café
-              <span className="block italic pl-[8vw] md:pl-32" style={{
-                backgroundImage: "var(--gradient-gold)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-              }}>
-                de la familia.
-              </span>
-            </h1>
-
-            <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div className="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
               <p className="font-display italic text-xl md:text-2xl text-muted-foreground max-w-md leading-snug">
                 Tostado meticulosamente para honrar la tradición.
               </p>
@@ -167,17 +158,19 @@ function Index() {
               </p>
             </div>
           </div>
-          <div className="relative flex justify-center">
-            <div
-              aria-hidden
-              className="absolute inset-0 blur-3xl opacity-30"
-              style={{ background: "radial-gradient(circle, oklch(0.78 0.13 82 / 0.4), transparent 65%)" }}
-            />
-            <img
-              src={logoAsset.url}
-              alt="Emblema El Café del Padrino"
-              className="relative w-full max-w-md"
-            />
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { src: productFront.url, alt: "Vista frontal del paquete", label: "Frente" },
+              { src: productSide.url, alt: "Vista lateral del paquete", label: "Costado" },
+              { src: productBack.url, alt: "Vista trasera del paquete", label: "Atrás" },
+            ].map((v) => (
+              <div key={v.label} className="flex flex-col items-center gap-3">
+                <div className="relative w-full aspect-[3/4] bg-background/60 border border-gold/20 overflow-hidden">
+                  <img src={v.src} alt={v.alt} className="absolute inset-0 w-full h-full object-contain" />
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.3em] text-gold/80">{v.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
