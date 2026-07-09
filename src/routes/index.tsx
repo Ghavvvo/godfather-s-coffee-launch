@@ -122,7 +122,7 @@ function Index() {
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="El Café del Padrino" className="h-10 w-auto" />
+            <img src={logoGoldAsset.url} alt="El Café del Padrino" className="h-14 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#historia" className="hover:text-gold transition-colors">Historia</a>
