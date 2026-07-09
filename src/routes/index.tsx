@@ -317,9 +317,9 @@ function Index() {
 
       {/* Footer */}
       <footer className="border-t border-gold/30 py-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <img src={logoAsset.url} alt="El Café del Padrino" className="h-20 w-auto opacity-80" />
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <img src={logoAsset.url} alt="El Café del Padrino" className="h-28 w-auto opacity-80" />
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground whitespace-nowrap">
             © 2026 El Café del Padrino · Gentleman's Roast
           </p>
         </div>
