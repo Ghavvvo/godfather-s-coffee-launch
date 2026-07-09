@@ -42,73 +42,98 @@ function Index() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section id="top" className="relative pt-32 pb-24 md:pt-40 md:pb-32">
+      {/* Hero — full-bleed cinematic */}
+      <section id="top" className="relative min-h-screen w-full overflow-hidden flex items-end">
+        <img
+          src={heroAsset.url}
+          alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Vignette + gradient scrim for readability */}
         <div
           aria-hidden
-          className="absolute inset-0 opacity-[0.08] pointer-events-none"
+          className="absolute inset-0"
           style={{
-            backgroundImage:
-              "radial-gradient(ellipse at 20% 10%, oklch(0.78 0.13 82 / 0.6), transparent 60%), radial-gradient(ellipse at 80% 90%, oklch(0.55 0.11 75 / 0.5), transparent 55%)",
+            background:
+              "linear-gradient(180deg, oklch(0.13 0.005 60 / 0.75) 0%, oklch(0.13 0.005 60 / 0.25) 35%, oklch(0.13 0.005 60 / 0.55) 70%, oklch(0.13 0.005 60 / 0.95) 100%)",
           }}
         />
-        <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-8 items-center">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 70% 40%, transparent 0%, oklch(0.13 0.005 60 / 0.4) 70%)",
+          }}
+        />
+
+        {/* Side rail — vertical eyebrow */}
+        <div className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-10 items-center gap-6 rotate-180" style={{ writingMode: "vertical-rl" }}>
+          <span className="text-[10px] uppercase tracking-[0.5em] text-gold/80">
+            Hecho en Italia · 2026
+          </span>
+          <span className="block w-px h-24 bg-gold/40" />
+        </div>
+
+        {/* Content — anchored bottom, centered editorial */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-20 md:pb-28 pt-32">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-4xl"
           >
-            <p className="text-xs uppercase tracking-[0.4em] text-gold mb-8">
-              Espresso · 100% Coffee
-            </p>
-            <h1 className="font-display text-6xl md:text-8xl leading-[0.9] tracking-tight">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="block w-16 h-px bg-gold" />
+              <p className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-gold">
+                Espresso · 100% Coffee
+              </p>
+            </div>
+
+            <h1 className="font-display text-[16vw] md:text-[9rem] lg:text-[11rem] leading-[0.85] tracking-tight text-foreground">
               El café
-              <br />
-              <span
-                className="italic bg-clip-text text-transparent"
-                style={{ backgroundImage: "var(--gradient-gold)" }}
-              >
-                de la familia
+              <span className="block italic pl-[8vw] md:pl-32" style={{
+                backgroundImage: "var(--gradient-gold)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}>
+                de la familia.
               </span>
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-md leading-relaxed">
-              Tostado meticulosamente para honrar la tradición.
-            </p>
-            <div className="mt-10 flex items-center gap-6">
-              <a
-                href="#contacto"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-primary-foreground text-xs uppercase tracking-[0.3em] font-medium hover:bg-gold-bright transition-colors"
-              >
-                Ponte en contacto
-              </a>
-              <a
-                href="#historia"
-                className="text-xs uppercase tracking-[0.3em] text-muted-foreground hover:text-gold transition-colors"
-              >
-                Nuestra historia →
-              </a>
+
+            <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+              <p className="font-display italic text-xl md:text-2xl text-muted-foreground max-w-md leading-snug">
+                Tostado meticulosamente para honrar la tradición.
+              </p>
+              <div className="flex items-center gap-6">
+                <a
+                  href="#contacto"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary-foreground text-[10px] uppercase tracking-[0.35em] font-medium hover:bg-gold-bright transition-colors"
+                >
+                  Ponte en contacto
+                </a>
+                <a
+                  href="#historia"
+                  className="text-[10px] uppercase tracking-[0.35em] text-foreground/70 hover:text-gold transition-colors border-b border-gold/40 pb-1"
+                >
+                  Nuestra historia
+                </a>
+              </div>
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="relative"
-          >
-            <div
-              aria-hidden
-              className="absolute -inset-8 rounded-full blur-3xl opacity-40"
-              style={{ background: "radial-gradient(circle, oklch(0.78 0.13 82 / 0.3), transparent 70%)" }}
-            />
-            <img
-              src={heroAsset.url}
-              alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
-              className="relative w-full h-auto object-cover"
-              style={{ boxShadow: "var(--shadow-elegant)" }}
-            />
-          </motion.div>
         </div>
+
+        {/* Scroll cue */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute bottom-6 right-6 z-10 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-gold/70"
+        >
+          <span>Scroll</span>
+          <span className="block w-16 h-px bg-gold/50" />
+        </motion.div>
       </section>
 
       {/* Brand strip */}
