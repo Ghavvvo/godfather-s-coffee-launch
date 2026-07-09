@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "motion/react";
-import { Coffee, Snowflake, Mail, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { useState } from "react";
+import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import heroAsset from "@/assets/hero.png.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
 import productFront from "@/assets/product-front.png.asset.json";
@@ -27,6 +28,91 @@ const ways = [
   { title: "Filtrado clásico", desc: "Aroma paciente para las mañanas largas.", icon: Coffee },
   { title: "Frío con hielo", desc: "Elegancia serena bajo el sol de Miami.", icon: Snowflake },
 ];
+
+const productViews = [
+  { src: productFront.url, alt: "Vista frontal del paquete El Café del Padrino", label: "Frente" },
+  { src: productSide.url, alt: "Vista lateral del paquete El Café del Padrino", label: "Costado" },
+  { src: productBack.url, alt: "Vista trasera del paquete El Café del Padrino", label: "Atrás" },
+];
+
+function ProductGallery() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const go = (i: number) => {
+    setDirection(i > index ? 1 : -1);
+    setIndex((i + productViews.length) % productViews.length);
+  };
+  const current = productViews[index];
+
+  return (
+    <div className="flex flex-col-reverse md:flex-row gap-6 items-center">
+      {/* Thumbnails */}
+      <div className="flex md:flex-col gap-3">
+        {productViews.map((v, i) => (
+          <button
+            key={v.label}
+            onClick={() => go(i)}
+            aria-label={`Ver ${v.label}`}
+            aria-pressed={i === index}
+            className={`relative w-20 h-24 md:w-24 md:h-28 overflow-hidden border transition-all duration-300 ${
+              i === index
+                ? "border-gold shadow-[0_0_0_1px_var(--gold)]"
+                : "border-gold/20 opacity-60 hover:opacity-100 hover:border-gold/60"
+            }`}
+          >
+            <img src={v.src} alt={v.alt} className="absolute inset-0 w-full h-full object-contain bg-background/40" />
+          </button>
+        ))}
+      </div>
+
+      {/* Main image */}
+      <div className="relative flex-1 w-full">
+        <div
+          aria-hidden
+          className="absolute inset-0 blur-3xl opacity-30"
+          style={{ background: "radial-gradient(circle, oklch(0.78 0.13 82 / 0.4), transparent 65%)" }}
+        />
+        <div className="relative w-full aspect-[3/4] md:aspect-[4/5] overflow-hidden">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.img
+              key={current.src}
+              src={current.src}
+              alt={current.alt}
+              custom={direction}
+              initial={{ opacity: 0, x: direction * 40, scale: 0.98 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: direction * -40, scale: 0.98 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 w-full h-full object-contain"
+            />
+          </AnimatePresence>
+
+          {/* Prev/next */}
+          <button
+            onClick={() => go(index - 1)}
+            aria-label="Anterior"
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center border border-gold/30 bg-background/60 backdrop-blur-sm text-gold hover:border-gold hover:bg-background/80 transition-colors"
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+          <button
+            onClick={() => go(index + 1)}
+            aria-label="Siguiente"
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center border border-gold/30 bg-background/60 backdrop-blur-sm text-gold hover:border-gold hover:bg-background/80 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+        </div>
+
+        <div className="mt-4 flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.35em] text-gold/80">
+          <span className="block w-8 h-px bg-gold/40" />
+          {current.label}
+          <span className="block w-8 h-px bg-gold/40" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Index() {
   return (
