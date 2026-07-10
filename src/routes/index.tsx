@@ -209,19 +209,19 @@ function Index() {
             </div>
 
             <div className="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-              <p className="font-display italic text-xl md:text-2xl text-muted-foreground max-w-md leading-snug">
+              <p className="font-display italic text-2xl md:text-3xl text-muted-foreground max-w-md leading-snug">
                 Tostado meticulosamente para honrar la tradición.
               </p>
               <div className="flex items-center gap-6">
                 <a
                   href="#contacto"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary-foreground text-xs uppercase tracking-[0.35em] font-medium hover:bg-gold-bright transition-colors"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary-foreground text-sm uppercase tracking-[0.35em] font-medium hover:bg-gold-bright transition-colors"
                 >
                   Ponte en contacto
                 </a>
                 <a
                   href="#historia"
-                  className="text-xs uppercase tracking-[0.35em] text-foreground/70 hover:text-gold transition-colors border-b border-gold/40 pb-1"
+                  className="text-sm uppercase tracking-[0.35em] text-foreground/70 hover:text-gold transition-colors border-b border-gold/40 pb-1"
                 >
                   Nuestra historia
                 </a>
@@ -316,7 +316,7 @@ function Index() {
                       </div>
                       <div>
                         <h3 className="font-display text-2xl mb-2">{w.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+                        <p className="text-base text-muted-foreground leading-relaxed">{w.desc}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -342,15 +342,17 @@ function Index() {
           <h2 className="font-display text-5xl md:text-7xl leading-[1] tracking-tight mb-12">
             Hablemos <span className="italic text-gold-bright">en familia</span>.
           </h2>
-          <motion.a
-            href="mailto:hello@thegodfatherscoffee.com"
-            animate={{ scale: [1, 1.04, 1] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="inline-flex items-center gap-3 font-display text-lg sm:text-2xl md:text-4xl text-gold hover:text-gold-bright transition-colors border-b border-gold/40 pb-2 break-all"
-          >
-            <Mail className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.5} />
-            hello@thegodfatherscoffee.com
-          </motion.a>
+          <div>
+            <motion.a
+              href="mailto:hello@thegodfatherscoffee.com"
+              animate={{ scale: [1, 1.04, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-flex items-center gap-3 font-display text-lg sm:text-2xl md:text-4xl text-gold hover:text-gold-bright transition-colors border-b border-gold/40 pb-2 break-all"
+            >
+              <Mail className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.5} />
+              hello@thegodfatherscoffee.com
+            </motion.a>
+          </div>
           <div className="mt-12 inline-flex items-center gap-2 text-muted-foreground uppercase tracking-[0.3em] text-xs">
             <MapPin className="w-4 h-4" strokeWidth={1.5} />
             Miami, Florida
