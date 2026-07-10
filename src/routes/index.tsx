@@ -133,58 +133,75 @@ function Index() {
       </header>
 
       {/* Hero — full-bleed cinematic */}
-      <section id="top" className="relative min-h-screen w-full overflow-hidden flex items-end">
-        <img
-          src={heroImg}
-          alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-        {/* Vignette + gradient scrim for readability */}
+      {/* Hero — stage composition, image mostrada a tamaño natural sin recorte agresivo */}
+      <section id="top" className="relative min-h-screen w-full overflow-hidden flex flex-col">
+        {/* Backdrop: sólido + textura sutil, sin re-escalar la foto del producto */}
+        <div aria-hidden className="absolute inset-0 bg-background" />
         <div
           aria-hidden
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-60"
           style={{
             background:
-              "linear-gradient(180deg, oklch(0.13 0.005 60 / 0.75) 0%, oklch(0.13 0.005 60 / 0.25) 35%, oklch(0.13 0.005 60 / 0.55) 70%, oklch(0.13 0.005 60 / 0.95) 100%)",
+              "radial-gradient(ellipse at 50% 35%, oklch(0.22 0.02 60 / 0.9) 0%, oklch(0.13 0.005 60 / 0) 60%)",
           }}
         />
         <div
           aria-hidden
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-[0.06] mix-blend-screen"
           style={{
-            background:
-              "radial-gradient(ellipse at 70% 40%, transparent 0%, oklch(0.13 0.005 60 / 0.4) 70%)",
+            backgroundImage:
+              "repeating-linear-gradient(45deg, oklch(0.78 0.13 82 / 0.4) 0 1px, transparent 1px 8px)",
           }}
         />
 
-        {/* Side rail — vertical eyebrow */}
-        <div className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-10 items-center gap-6 rotate-180" style={{ writingMode: "vertical-rl" }}>
-          <span className="text-[10px] uppercase tracking-[0.5em] text-gold/80">
-            Hecho en Italia · 2026
-          </span>
-          <span className="block w-px h-24 bg-gold/40" />
-        </div>
-
-        {/* Content — anchored bottom, centered editorial */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-20 md:pb-28 pt-32">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-28 pb-16 px-6">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-4xl"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full max-w-6xl flex flex-col items-center text-center"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <span className="block w-16 h-px bg-gold" />
+            {/* Eyebrow */}
+            <div className="flex items-center gap-4 mb-6">
+              <span className="block w-10 h-px bg-gold" />
               <p className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-gold">
                 Espresso · 100% Coffee
               </p>
+              <span className="block w-10 h-px bg-gold" />
             </div>
 
-            <div className="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-              <p className="font-display italic text-xl md:text-2xl text-muted-foreground max-w-md leading-snug">
+            {/* Producto centrado, object-contain, alto acotado por viewport para no pixelar */}
+            <div className="relative w-full flex items-center justify-center">
+              {/* halo dorado detrás */}
+              <div
+                aria-hidden
+                className="absolute inset-0 blur-3xl opacity-40"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 55%, oklch(0.78 0.13 82 / 0.55), transparent 55%)",
+                }}
+              />
+              {/* pedestal / línea de suelo */}
+              <div
+                aria-hidden
+                className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[60%] max-w-md h-px bg-gradient-to-r from-transparent via-gold/60 to-transparent"
+              />
+              <motion.img
+                src={heroImg}
+                alt="El Café del Padrino Espresso — paquete negro con detalles dorados"
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-auto h-auto max-h-[58vh] md:max-h-[62vh] max-w-full object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+              />
+            </div>
+
+            {/* Footer editorial debajo del producto */}
+            <div className="mt-10 flex flex-col items-center gap-8">
+              <p className="font-display italic text-lg md:text-2xl text-muted-foreground max-w-xl leading-snug">
                 Tostado meticulosamente para honrar la tradición.
               </p>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-wrap items-center justify-center gap-6">
                 <a
                   href="#contacto"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary-foreground text-[10px] uppercase tracking-[0.35em] font-medium hover:bg-gold-bright transition-colors"
@@ -202,16 +219,17 @@ function Index() {
           </motion.div>
         </div>
 
-        {/* Scroll cue */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-6 right-6 z-10 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-gold/70"
-        >
-          <span>Scroll</span>
-          <span className="block w-16 h-px bg-gold/50" />
-        </motion.div>
+        {/* Barra inferior con datos de marca */}
+        <div className="relative z-10 border-t border-gold/20">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between text-[10px] uppercase tracking-[0.4em] text-gold/70">
+            <span>Hecho en Italia</span>
+            <span className="hidden sm:inline">Miami · 2026</span>
+            <span className="flex items-center gap-3">
+              Scroll
+              <span className="block w-10 h-px bg-gold/50" />
+            </span>
+          </div>
+        </div>
       </section>
 
       {/* Brand strip */}
