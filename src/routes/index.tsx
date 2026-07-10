@@ -265,9 +265,9 @@ function Index() {
             {ways.map((w, i) => {
               const Icon = w.icon;
               return (
-                <div key={w.title} className="relative max-w-[500px] w-full h-[280px]">
+                <div key={w.title} className="relative max-w-[500px] w-full aspect-square">
                   <div
-                    className="absolute w-[90%] h-full left-1/2 -translate-x-1/2 bottom-[-15px] z-[-2] rounded-[20px] blur-[15px]"
+                    className="absolute w-[90%] aspect-square left-1/2 -translate-x-1/2 bottom-[-15px] z-[-2] blur-[15px]"
                     style={{
                       background: `linear-gradient(135deg, ${w.gradient[0]}, ${w.gradient[1]})`,
                     }}
@@ -278,7 +278,7 @@ function Index() {
                     whileHover={{ scale: 1.02 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.6, delay: i * 0.1, scale: { duration: 0.1, ease: [0.25, 0.45, 0.45, 0.95] } }}
-                    className="relative w-full h-full rounded-[20px] overflow-hidden border border-gold/30 hover:border-gold"
+                    className="relative w-full h-full overflow-hidden border border-gold/30 hover:border-gold"
                   >
                     <div
                       className="absolute inset-0 z-[-1]"
