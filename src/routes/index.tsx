@@ -106,7 +106,7 @@ function ProductGallery() {
           </button>
         </div>
 
-        <div className="mt-4 flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.35em] text-gold/80">
+        <div className="mt-4 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.35em] text-gold/80">
           <span className="block w-8 h-px bg-gold/40" />
           {current.label}
           <span className="block w-8 h-px bg-gold/40" />
@@ -125,7 +125,7 @@ function Index() {
           <a href="#top" className="flex items-center gap-3">
             <img src={logoGoldImg} alt="El Café del Padrino" className="h-14 w-auto" />
           </a>
-          <nav className="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <nav className="hidden md:flex items-center gap-10 text-sm uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#historia" className="hover:text-gold transition-colors">Historia</a>
             <a href="#formas" className="hover:text-gold transition-colors">Formas</a>
             <a href="#contacto" className="hover:text-gold transition-colors">Contacto</a>
@@ -142,13 +142,13 @@ function Index() {
               </div>
               <nav className="flex flex-col gap-8">
                 <SheetClose asChild>
-                  <a href="#historia" className="font-display text-3xl text-foreground hover:text-gold transition-colors">Historia</a>
+                  <a href="#historia" className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors">Historia</a>
                 </SheetClose>
                 <SheetClose asChild>
-                  <a href="#formas" className="font-display text-3xl text-foreground hover:text-gold transition-colors">Formas</a>
+                  <a href="#formas" className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors">Formas</a>
                 </SheetClose>
                 <SheetClose asChild>
-                  <a href="#contacto" className="font-display text-3xl text-foreground hover:text-gold transition-colors">Contacto</a>
+                  <a href="#contacto" className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors">Contacto</a>
                 </SheetClose>
               </nav>
               <div className="mt-auto">
@@ -187,7 +187,7 @@ function Index() {
 
         {/* Side rail — vertical eyebrow */}
         <div className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-10 items-center gap-6 rotate-180" style={{ writingMode: "vertical-rl" }}>
-          <span className="text-[10px] uppercase tracking-[0.5em] text-gold/80">
+          <span className="text-xs uppercase tracking-[0.5em] text-gold/80">
             Hecho en Italia · 2026
           </span>
           <span className="block w-px h-24 bg-gold/40" />
@@ -203,7 +203,7 @@ function Index() {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="block w-16 h-px bg-gold" />
-              <p className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-gold">
+              <p className="text-xs uppercase tracking-[0.5em] text-gold">
                 Espresso · 100% Coffee
               </p>
             </div>
@@ -215,13 +215,13 @@ function Index() {
               <div className="flex items-center gap-6">
                 <a
                   href="#contacto"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary-foreground text-[10px] uppercase tracking-[0.35em] font-medium hover:bg-gold-bright transition-colors"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-primary-foreground text-xs uppercase tracking-[0.35em] font-medium hover:bg-gold-bright transition-colors"
                 >
                   Ponte en contacto
                 </a>
                 <a
                   href="#historia"
-                  className="text-[10px] uppercase tracking-[0.35em] text-foreground/70 hover:text-gold transition-colors border-b border-gold/40 pb-1"
+                  className="text-xs uppercase tracking-[0.35em] text-foreground/70 hover:text-gold transition-colors border-b border-gold/40 pb-1"
                 >
                   Nuestra historia
                 </a>
@@ -235,7 +235,7 @@ function Index() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-6 right-6 z-10 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-gold/70"
+          className="absolute bottom-6 right-6 z-10 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold/70"
         >
           <span>Scroll</span>
           <span className="block w-16 h-px bg-gold/50" />
@@ -361,7 +361,7 @@ function Index() {
       {/* Footer */}
       <footer className="border-t border-gold/30 py-10">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-center">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground whitespace-nowrap">
+          <p className="text-xs sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground whitespace-nowrap">
             © 2026 El Café del Padrino · Gentleman's Roast
           </p>
         </div>
