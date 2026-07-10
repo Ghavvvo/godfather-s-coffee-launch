@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
-import heroAsset from "@/assets/hero.png.asset.json";
-import logoAsset from "@/assets/logo.png.asset.json";
-import logoGoldAsset from "@/assets/logo-gold.png.asset.json";
-import productFront from "@/assets/product-front.png.asset.json";
-import productSide from "@/assets/product-side.png.asset.json";
-import productBack from "@/assets/product-back.png.asset.json";
+import heroImg from "@/assets/hero.png";
+import logoImg from "@/assets/logo.png";
+import logoGoldImg from "@/assets/logo-gold.png";
+import productFrontImg from "@/assets/product-front.png";
+import productSideImg from "@/assets/product-side.png";
+import productBackImg from "@/assets/product-back.png";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -15,8 +15,8 @@ import productBack from "@/assets/product-back.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { property: "og:image", content: heroAsset.url },
-      { name: "twitter:image", content: heroAsset.url },
+      { property: "og:image", content: heroImg },
+      { name: "twitter:image", content: heroImg },
     ],
   }),
   component: Index,
@@ -31,9 +31,9 @@ const ways = [
 ];
 
 const productViews = [
-  { src: productFront.url, alt: "Vista frontal del paquete El Café del Padrino", label: "Frente" },
-  { src: productSide.url, alt: "Vista lateral del paquete El Café del Padrino", label: "Costado" },
-  { src: productBack.url, alt: "Vista trasera del paquete El Café del Padrino", label: "Atrás" },
+  { src: productFrontImg, alt: "Vista frontal del paquete El Café del Padrino", label: "Frente" },
+  { src: productSideImg, alt: "Vista lateral del paquete El Café del Padrino", label: "Costado" },
+  { src: productBackImg, alt: "Vista trasera del paquete El Café del Padrino", label: "Atrás" },
 ];
 
 function ProductGallery() {
@@ -122,7 +122,7 @@ function Index() {
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logoGoldAsset.url} alt="El Café del Padrino" className="h-14 w-auto" />
+            <img src={logoGoldImg} alt="El Café del Padrino" className="h-14 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#historia" className="hover:text-gold transition-colors">Historia</a>
@@ -135,7 +135,7 @@ function Index() {
       {/* Hero — full-bleed cinematic */}
       <section id="top" className="relative min-h-screen w-full overflow-hidden flex items-end">
         <img
-          src={heroAsset.url}
+          src={heroImg}
           alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -318,7 +318,7 @@ function Index() {
       {/* Footer */}
       <footer className="border-t border-gold/30 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <img src={logoAsset.url} alt="El Café del Padrino" className="h-28 w-auto opacity-80" />
+          <img src={logoImg} alt="El Café del Padrino" className="h-28 w-auto opacity-80" />
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground whitespace-nowrap">
             © 2026 El Café del Padrino · Gentleman's Roast
           </p>
