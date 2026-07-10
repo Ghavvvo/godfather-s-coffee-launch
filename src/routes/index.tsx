@@ -196,7 +196,7 @@ function Index() {
           style={{
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
-            maskImage: "radial-gradient(ellipse 150% 150% at 55% 50%, transparent 20%, black 38%)",
+            maskImage: "radial-gradient(ellipse 150% 150% at 55% 50%, transparent 30%, black 38%)",
             WebkitMaskImage: "radial-gradient(ellipse 100% 1000% at 50% 45%, transparent 30%, black 38%)",
           }}
         />
