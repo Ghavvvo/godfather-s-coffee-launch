@@ -229,19 +229,14 @@ function Index() {
           <div>
             <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">Tradición</p>
             <h2 className="font-display text-5xl md:text-6xl leading-[1] tracking-tight">
-              Un ritual heredado,
+              Tradición italiana,
               <br />
-              <span className="italic text-gold-bright">servido en cada taza.</span>
+              <span className="italic text-gold-bright">corazón cubano.</span>
             </h2>
-            <div className="mt-10 space-y-5 text-muted-foreground text-lg leading-relaxed max-w-lg">
+            <div className="mt-10 text-muted-foreground text-lg leading-relaxed max-w-lg">
               <p>
-                En El Café del Padrino tostamos con la paciencia de quien entiende que
-                el tiempo es parte del sabor. Cada grano es escogido, vigilado y
-                honrado.
-              </p>
-              <p>
-                Una receta italiana guardada como se guardan los asuntos importantes:
-                en familia, con respeto, y sin atajos.
+                La tradición cafetera italiana se encuentra con el ritual cubano del
+                café. Un espresso puro, con carácter, para compartir en familia.
               </p>
             </div>
           </div>
@@ -319,13 +314,15 @@ function Index() {
           <h2 className="font-display text-5xl md:text-7xl leading-[1] tracking-tight mb-12">
             Hablemos <span className="italic text-gold-bright">en familia</span>.
           </h2>
-          <a
+          <motion.a
             href="mailto:hello@thegodfatherscoffee.com"
+            animate={{ scale: [1, 1.04, 1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             className="inline-flex items-center gap-3 font-display text-lg sm:text-2xl md:text-4xl text-gold hover:text-gold-bright transition-colors border-b border-gold/40 pb-2 break-all"
           >
             <Mail className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" strokeWidth={1.5} />
             hello@thegodfatherscoffee.com
-          </a>
+          </motion.a>
           <div className="mt-12 inline-flex items-center gap-2 text-muted-foreground uppercase tracking-[0.3em] text-xs">
             <MapPin className="w-4 h-4" strokeWidth={1.5} />
             Miami, Florida
