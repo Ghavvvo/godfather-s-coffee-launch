@@ -167,6 +167,17 @@ function Index() {
           alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
           className="absolute inset-0 w-full h-full object-contain md:object-cover object-center"
         />
+        {/* Radial blur mask — ligero */}
+        <div
+          aria-hidden
+          className="hidden lg:block absolute inset-0"
+          style={{
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            maskImage: "radial-gradient(ellipse 130% 130% at 55% 50%, transparent 20%, black 38%)",
+            WebkitMaskImage: "radial-gradient(ellipse 100% 1000% at 50% 45%, transparent 30%, black 38%)",
+          }}
+        />
         {/* Vignette + gradient scrim for readability */}
         <div
           aria-hidden
