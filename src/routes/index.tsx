@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight, Menu } from "lucide-react";
+import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
 import heroImg from "@/assets/hero.png";
 import logoImg from "@/assets/logo.png";
 import logoGoldImg from "@/assets/logo-gold.png";
@@ -129,6 +130,33 @@ function Index() {
             <a href="#formas" className="hover:text-gold transition-colors">Formas</a>
             <a href="#contacto" className="hover:text-gold transition-colors">Contacto</a>
           </nav>
+          <Sheet>
+            <SheetTrigger asChild className="md:hidden">
+              <button className="flex items-center justify-center w-10 h-10 text-gold hover:text-gold-bright transition-colors">
+                <Menu className="w-6 h-6" strokeWidth={1.5} />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-4/5 sm:max-w-sm bg-background/95 backdrop-blur-md border-l border-gold/20 p-8 flex flex-col">
+              <div className="flex items-center gap-3 mb-12">
+                <img src={logoGoldImg} alt="El Café del Padrino" className="h-10 w-auto" />
+              </div>
+              <nav className="flex flex-col gap-8">
+                <SheetClose asChild>
+                  <a href="#historia" className="font-display text-3xl text-foreground hover:text-gold transition-colors">Historia</a>
+                </SheetClose>
+                <SheetClose asChild>
+                  <a href="#formas" className="font-display text-3xl text-foreground hover:text-gold transition-colors">Formas</a>
+                </SheetClose>
+                <SheetClose asChild>
+                  <a href="#contacto" className="font-display text-3xl text-foreground hover:text-gold transition-colors">Contacto</a>
+                </SheetClose>
+              </nav>
+              <div className="mt-auto">
+                <div className="h-px bg-gold/30 mb-6" />
+                <p className="text-xs uppercase tracking-[0.4em] text-gold/60">Hecho en Italia · 2026</p>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
