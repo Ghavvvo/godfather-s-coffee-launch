@@ -165,7 +165,7 @@ function Index() {
         <img
           src={heroImg}
           alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-contain object-center"
         />
         {/* Vignette + gradient scrim for readability */}
         <div
