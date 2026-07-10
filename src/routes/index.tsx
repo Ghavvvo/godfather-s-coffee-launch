@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
 import heroImg from "@/assets/hero.png";
@@ -117,8 +117,30 @@ function ProductGallery() {
 }
 
 function Index() {
+  const [bgColor, setBgColor] = useState("oklch(0.13 0.005 60)");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const bg = entry.target.getAttribute("data-bg");
+            if (bg) setBgColor(bg);
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+    const elements = document.querySelectorAll("[data-bg]");
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
+    <div
+      className="min-h-screen text-foreground font-sans overflow-x-hidden"
+      style={{ backgroundColor: bgColor, transition: "background-color 0.8s ease" }}
+    >
       {/* Nav */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -161,7 +183,7 @@ function Index() {
       </header>
 
       {/* Hero — full-bleed cinematic */}
-      <section id="top" className="relative min-h-screen w-full overflow-hidden flex items-end">
+      <section id="top" className="relative min-h-screen w-full overflow-hidden flex items-end" data-bg="oklch(0.12 0.005 60)">
         <img
           src={heroImg}
           alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
@@ -174,7 +196,7 @@ function Index() {
           style={{
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
-            maskImage: "radial-gradient(ellipse 130% 130% at 55% 50%, transparent 20%, black 38%)",
+            maskImage: "radial-gradient(ellipse 140% 140% at 55% 50%, transparent 20%, black 38%)",
             WebkitMaskImage: "radial-gradient(ellipse 100% 1000% at 50% 45%, transparent 30%, black 38%)",
           }}
         />
@@ -254,7 +276,7 @@ function Index() {
       </section>
 
       {/* Brand strip */}
-      <section className="relative py-16 border-y border-gold/30">
+      <section className="relative py-16 border-y border-gold/30" data-bg="oklch(0.22 0.04 75)">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="font-display italic text-2xl md:text-3xl text-gold-bright">
             Hecho en Italia · 100% Café Puro
@@ -263,7 +285,7 @@ function Index() {
       </section>
 
       {/* Historia */}
-      <section id="historia" className="py-28 md:py-40">
+      <section id="historia" className="py-28 md:py-40" data-bg="oklch(0.14 0.02 50)">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">Tradición</p>
@@ -284,7 +306,7 @@ function Index() {
       </section>
 
       {/* Formas */}
-      <section id="formas" className="py-28 md:py-40 bg-card/40 border-y border-border/40">
+      <section id="formas" className="py-28 md:py-40 bg-card/40 border-y border-border/40" data-bg="oklch(0.20 0.025 70)">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl mb-16">
             <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">Formas de disfrutarlo</p>
@@ -339,7 +361,7 @@ function Index() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="py-28 md:py-40 relative">
+      <section id="contacto" className="py-28 md:py-40 relative" data-bg="oklch(0.12 0.005 60)">
         <div
           aria-hidden
           className="absolute inset-0 opacity-[0.08]"
