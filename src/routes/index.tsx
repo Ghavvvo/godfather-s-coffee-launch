@@ -24,10 +24,10 @@ export const Route = createFileRoute("/")({
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 const ways = [
-  { title: "Espresso corto", desc: "Intenso, breve, incorruptible.", icon: Coffee },
-  { title: "Capuchino espumoso", desc: "Terciopelo de leche sobre crema dorada.", icon: Coffee },
-  { title: "Filtrado clásico", desc: "Aroma paciente para las mañanas largas.", icon: Coffee },
-  { title: "Frío con hielo", desc: "Elegancia serena bajo el sol de Miami.", icon: Snowflake },
+  { title: "Espresso corto", desc: "Intenso, breve, incorruptible.", icon: Coffee, gradient: ["oklch(0.25 0.04 30)", "oklch(0.14 0.01 60)"] },
+  { title: "Capuchino espumoso", desc: "Terciopelo de leche sobre crema dorada.", icon: Coffee, gradient: ["oklch(0.30 0.06 65)", "oklch(0.16 0.008 60)"] },
+  { title: "Filtrado clásico", desc: "Aroma paciente para las mañanas largas.", icon: Coffee, gradient: ["oklch(0.28 0.05 75)", "oklch(0.14 0.01 60)"] },
+  { title: "Frío con hielo", desc: "Elegancia serena bajo el sol de Miami.", icon: Snowflake, gradient: ["oklch(0.20 0.03 230)", "oklch(0.14 0.005 60)"] },
 ];
 
 const productViews = [
@@ -265,21 +265,39 @@ function Index() {
             {ways.map((w, i) => {
               const Icon = w.icon;
               return (
-                <motion.div
-                  key={w.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="group relative p-8 border border-gold/30 bg-background/60 hover:border-gold transition-colors"
-                >
-                  <Icon className="w-8 h-8 text-gold mb-8" strokeWidth={1} />
-                  <h3 className="font-display text-2xl mb-3">{w.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
-                  <div className="mt-8 text-xs uppercase tracking-[0.3em] text-gold-deep">
-                    0{i + 1}
-                  </div>
-                </motion.div>
+                <div key={w.title} className="relative max-w-[500px] w-full h-[280px]">
+                  <div
+                    className="absolute w-[90%] h-full left-1/2 -translate-x-1/2 bottom-[-15px] z-[-2] rounded-[20px] blur-[15px]"
+                    style={{
+                      background: `linear-gradient(135deg, ${w.gradient[0]}, ${w.gradient[1]})`,
+                    }}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ scale: 1.02 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, delay: i * 0.1, scale: { duration: 0.1, ease: [0.25, 0.45, 0.45, 0.95] } }}
+                    className="relative w-full h-full rounded-[20px] overflow-hidden border border-gold/30 hover:border-gold"
+                  >
+                    <div
+                      className="absolute inset-0 z-[-1]"
+                      style={{
+                        background: `linear-gradient(135deg, ${w.gradient[0]}, ${w.gradient[1]})`,
+                      }}
+                    />
+                    <div className="h-full flex flex-col justify-between p-8 relative z-0">
+                      <div className="flex justify-between items-start">
+                        <Icon className="w-8 h-8 text-gold" strokeWidth={1} />
+                        <span className="text-xs uppercase tracking-[0.3em] text-foreground/40">0{i + 1}</span>
+                      </div>
+                      <div>
+                        <h3 className="font-display text-2xl mb-2">{w.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{w.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               );
             })}
           </div>
@@ -317,8 +335,7 @@ function Index() {
 
       {/* Footer */}
       <footer className="border-t border-gold/30 py-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <img src={logoImg} alt="El Café del Padrino" className="h-28 w-auto opacity-80" />
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-center">
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.3em] text-muted-foreground whitespace-nowrap">
             © 2026 El Café del Padrino · Gentleman's Roast
           </p>
