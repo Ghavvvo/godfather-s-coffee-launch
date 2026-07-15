@@ -10,6 +10,7 @@ import {
 import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import faviconLogo from "../assets/logo-gold.webp";
 import { LocaleProvider, useLocale } from "../lib/locale-context";
 import { t } from "../lib/i18n";
 
@@ -90,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: faviconLogo, type: "image/webp" },
     ],
   }),
   shellComponent: RootShell,
