@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { Coffee, Snowflake, Mail, MapPin, ChevronLeft, ChevronRight, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
-import heroImg from "@/assets/hero.png";
-import logoImg from "@/assets/logo.png";
-import logoGoldImg from "@/assets/logo-gold.png";
-import productFrontImg from "@/assets/product-front.png";
-import productSideImg from "@/assets/product-side.png";
-import productBackImg from "@/assets/product-back.png";
+import heroImg from "@/assets/hero.webp";
+import logoGoldImg from "@/assets/logo-gold.webp";
+import productFrontImg from "@/assets/product-front.webp";
+import productSideImg from "@/assets/product-side.webp";
+import productBackImg from "@/assets/product-back.webp";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
