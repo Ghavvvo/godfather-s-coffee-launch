@@ -43,7 +43,7 @@ const dict: Dict = {
 
   "contact.label": { es: "Contacto", en: "Contact" },
   "contact.titlePre": { es: "Hablemos ", en: "Let's talk " },
-  "contact.titleItalic": { es: "en familia", en: "family" },
+  "contact.titleItalic": { es: "en familia", en: "as a family" },
   "contact.titleSuffix": { es: ".", en: "." },
   "contact.distributorAmerica": { es: "América: Deliflow — Distribuidor Oficial", en: "Americas: Deliflow — Official Distributor" },
   "contact.distributorEurope": { es: "Europa: SEEP — Distribuidor Oficial", en: "Europe: SEEP — Official Distributor" },

@@ -18,6 +18,9 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: heroImg },
       { name: "twitter:image", content: heroImg },
     ],
+    links: [
+      { rel: "preload", href: heroImg, as: "image" },
+    ],
   }),
   component: Index,
 });
@@ -64,7 +67,7 @@ function ProductGallery({ locale }: { locale: Locale }) {
                 : "border-gold/20 opacity-60 hover:opacity-100 hover:border-gold/60"
             }`}
           >
-            <img src={v.src} alt={v.alt} className="absolute inset-0 w-full h-full object-contain bg-background/40" />
+            <img src={v.src} alt={v.alt} width={1920} height={1440} loading="lazy" className="absolute inset-0 w-full h-full object-contain bg-background/40" />
           </button>
         ))}
       </div>
@@ -81,6 +84,9 @@ function ProductGallery({ locale }: { locale: Locale }) {
               key={current.src}
               src={current.src}
               alt={current.alt}
+              width={1920}
+              height={1440}
+              loading="lazy"
               custom={direction}
               initial={{ opacity: 0, x: direction * 40, scale: 0.98 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -147,8 +153,8 @@ function Index() {
       {/* Nav */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-3">
-            <img src={logoGoldImg} alt="El Café del Padrino" className="h-14 w-auto" />
+            <a href="#top" className="flex items-center gap-3">
+            <img src={logoGoldImg} alt="El Café del Padrino" width={1920} height={1920} className="h-14 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-10 text-sm uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#historia" className="hover:text-gold transition-colors">{t("nav.story", locale)}</a>
@@ -166,7 +172,7 @@ function Index() {
               </SheetTrigger>
               <SheetContent side="right" className="w-4/5 sm:max-w-sm bg-background/95 backdrop-blur-md border-l border-gold/20 p-8 flex flex-col">
                 <div className="flex items-center gap-3 mb-12">
-                  <img src={logoGoldImg} alt="El Café del Padrino" className="h-10 w-auto" />
+                  <img src={logoGoldImg} alt="El Café del Padrino" width={1920} height={1920} className="h-10 w-auto" />
                 </div>
                 <nav className="flex flex-col gap-8">
                   <SheetClose asChild>
@@ -194,6 +200,9 @@ function Index() {
         <img
           src={heroImg}
           alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
+          width={1122}
+          height={1402}
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-contain md:object-cover object-center"
         />
         <div
@@ -390,6 +399,10 @@ function Index() {
           <div className="mt-12 inline-flex items-center gap-2 text-muted-foreground uppercase tracking-[0.3em] text-xs">
             <MapPin className="w-4 h-4" strokeWidth={1.5} />
             Miami, Florida
+          </div>
+          <div className="mt-16 space-y-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            <p>{t("contact.distributorAmerica", locale)}</p>
+            <p>{t("contact.distributorEurope", locale)}</p>
           </div>
         </div>
       </section>
