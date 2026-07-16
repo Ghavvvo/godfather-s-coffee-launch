@@ -8,6 +8,8 @@ import logoGoldImg from "@/assets/logo-gold.webp";
 import productFrontImg from "@/assets/product-front.webp";
 import productSideImg from "@/assets/product-side.webp";
 import productBackImg from "@/assets/product-back.webp";
+import deliflowImg from "@/assets/deliflow.png";
+import effeImg from "@/assets/2effe.png";
 import { useLocale } from "@/lib/locale-context";
 import { t, type Locale } from "@/lib/i18n";
 import { LanguageToggle } from "@/lib/language-toggle";
@@ -18,25 +20,47 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: heroImg },
       { name: "twitter:image", content: heroImg },
     ],
-    links: [
-      { rel: "preload", href: heroImg, as: "image" },
-    ],
+    links: [{ rel: "preload", href: heroImg, as: "image" }],
   }),
   component: Index,
 });
 
 function getWays(locale: Locale) {
   return [
-    { title: t("card.espresso.title", locale), desc: t("card.espresso.desc", locale), icon: Coffee, gradient: ["oklch(0.25 0.04 30)", "oklch(0.14 0.01 60)"] },
-    { title: t("card.capuchino.title", locale), desc: t("card.capuchino.desc", locale), icon: Coffee, gradient: ["oklch(0.30 0.06 65)", "oklch(0.16 0.008 60)"] },
-    { title: t("card.filtrado.title", locale), desc: t("card.filtrado.desc", locale), icon: Coffee, gradient: ["oklch(0.28 0.05 75)", "oklch(0.14 0.01 60)"] },
-    { title: t("card.helado.title", locale), desc: t("card.helado.desc", locale), icon: Snowflake, gradient: ["oklch(0.20 0.03 230)", "oklch(0.14 0.005 60)"] },
+    {
+      title: t("card.espresso.title", locale),
+      desc: t("card.espresso.desc", locale),
+      icon: Coffee,
+      gradient: ["oklch(0.25 0.04 30)", "oklch(0.14 0.01 60)"],
+    },
+    {
+      title: t("card.capuchino.title", locale),
+      desc: t("card.capuchino.desc", locale),
+      icon: Coffee,
+      gradient: ["oklch(0.30 0.06 65)", "oklch(0.16 0.008 60)"],
+    },
+    {
+      title: t("card.filtrado.title", locale),
+      desc: t("card.filtrado.desc", locale),
+      icon: Coffee,
+      gradient: ["oklch(0.28 0.05 75)", "oklch(0.14 0.01 60)"],
+    },
+    {
+      title: t("card.helado.title", locale),
+      desc: t("card.helado.desc", locale),
+      icon: Snowflake,
+      gradient: ["oklch(0.20 0.03 230)", "oklch(0.14 0.005 60)"],
+    },
   ];
 }
 
 function getProductViews(locale: Locale) {
   return [
-    { src: productFrontImg, alt: t("product.viewFront", locale), label: t("product.front", locale) },
+    {
+      src: productFrontImg,
+      alt: t("product.viewFront", locale),
+      label: t("product.front", locale),
+    },
     { src: productSideImg, alt: t("product.viewSide", locale), label: t("product.side", locale) },
     { src: productBackImg, alt: t("product.viewBack", locale), label: t("product.back", locale) },
   ];
@@ -67,7 +91,14 @@ function ProductGallery({ locale }: { locale: Locale }) {
                 : "border-gold/20 opacity-60 hover:opacity-100 hover:border-gold/60"
             }`}
           >
-            <img src={v.src} alt={v.alt} width={1920} height={1440} loading="lazy" className="absolute inset-0 w-full h-full object-contain bg-background/40" />
+            <img
+              src={v.src}
+              alt={v.alt}
+              width={1920}
+              height={1440}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-contain bg-background/40"
+            />
           </button>
         ))}
       </div>
@@ -76,7 +107,9 @@ function ProductGallery({ locale }: { locale: Locale }) {
         <div
           aria-hidden
           className="absolute inset-0 blur-3xl opacity-30"
-          style={{ background: "radial-gradient(circle, oklch(0.78 0.13 82 / 0.4), transparent 65%)" }}
+          style={{
+            background: "radial-gradient(circle, oklch(0.78 0.13 82 / 0.4), transparent 65%)",
+          }}
         />
         <div className="relative w-full aspect-[3/4] md:aspect-[4/5] overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
@@ -153,13 +186,25 @@ function Index() {
       {/* Nav */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#top" className="flex items-center gap-3">
-            <img src={logoGoldImg} alt="El Café del Padrino" width={1920} height={1920} className="h-14 w-auto" />
+          <a href="#top" className="flex items-center gap-3">
+            <img
+              src={logoGoldImg}
+              alt="El Café del Padrino"
+              width={1920}
+              height={1920}
+              className="h-14 w-auto"
+            />
           </a>
           <nav className="hidden md:flex items-center gap-10 text-sm uppercase tracking-[0.25em] text-muted-foreground">
-            <a href="#historia" className="hover:text-gold transition-colors">{t("nav.story", locale)}</a>
-            <a href="#formas" className="hover:text-gold transition-colors">{t("nav.ways", locale)}</a>
-            <a href="#contacto" className="hover:text-gold transition-colors">{t("nav.contact", locale)}</a>
+            <a href="#historia" className="hover:text-gold transition-colors">
+              {t("nav.story", locale)}
+            </a>
+            <a href="#formas" className="hover:text-gold transition-colors">
+              {t("nav.ways", locale)}
+            </a>
+            <a href="#contacto" className="hover:text-gold transition-colors">
+              {t("nav.contact", locale)}
+            </a>
             <LanguageToggle />
           </nav>
           <div className="flex md:hidden items-center gap-4">
@@ -170,24 +215,50 @@ function Index() {
                   <Menu className="w-6 h-6" strokeWidth={1.5} />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-4/5 sm:max-w-sm bg-background/95 backdrop-blur-md border-l border-gold/20 p-8 flex flex-col">
+              <SheetContent
+                side="right"
+                className="w-4/5 sm:max-w-sm bg-background/95 backdrop-blur-md border-l border-gold/20 p-8 flex flex-col"
+              >
                 <div className="flex items-center gap-3 mb-12">
-                  <img src={logoGoldImg} alt="El Café del Padrino" width={1920} height={1920} className="h-10 w-auto" />
+                  <img
+                    src={logoGoldImg}
+                    alt="El Café del Padrino"
+                    width={1920}
+                    height={1920}
+                    className="h-10 w-auto"
+                  />
                 </div>
                 <nav className="flex flex-col gap-8">
                   <SheetClose asChild>
-                    <a href="#historia" className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors">{t("nav.story", locale)}</a>
+                    <a
+                      href="#historia"
+                      className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors"
+                    >
+                      {t("nav.story", locale)}
+                    </a>
                   </SheetClose>
                   <SheetClose asChild>
-                    <a href="#formas" className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors">{t("nav.ways", locale)}</a>
+                    <a
+                      href="#formas"
+                      className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors"
+                    >
+                      {t("nav.ways", locale)}
+                    </a>
                   </SheetClose>
                   <SheetClose asChild>
-                    <a href="#contacto" className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors">{t("nav.contact", locale)}</a>
+                    <a
+                      href="#contacto"
+                      className="text-sm uppercase tracking-[0.25em] text-muted-foreground hover:text-gold transition-colors"
+                    >
+                      {t("nav.contact", locale)}
+                    </a>
                   </SheetClose>
                 </nav>
                 <div className="mt-auto">
                   <div className="h-px bg-gold/30 mb-6" />
-                  <p className="text-xs uppercase tracking-[0.4em] text-gold/60">{t("sideRail.madeIn", locale)}</p>
+                  <p className="text-xs uppercase tracking-[0.4em] text-gold/60">
+                    {t("sideRail.madeIn", locale)}
+                  </p>
                 </div>
               </SheetContent>
             </Sheet>
@@ -196,7 +267,11 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section id="top" className="relative min-h-screen w-full overflow-hidden flex items-end" data-bg="oklch(0.12 0.005 60)">
+      <section
+        id="top"
+        className="relative min-h-screen w-full overflow-hidden flex items-end"
+        data-bg="oklch(0.12 0.005 60)"
+      >
         <img
           src={heroImg}
           alt="El Café del Padrino Espresso — paquete negro con detalles dorados sobre mármol"
@@ -212,7 +287,8 @@ function Index() {
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
             maskImage: "radial-gradient(ellipse 150% 150% at 55% 50%, transparent 30%, black 38%)",
-            WebkitMaskImage: "radial-gradient(ellipse 100% 1000% at 50% 45%, transparent 30%, black 38%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 100% 1000% at 50% 45%, transparent 30%, black 38%)",
           }}
         />
         <div
@@ -232,7 +308,10 @@ function Index() {
           }}
         />
 
-        <div className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-10 items-center gap-6 rotate-180" style={{ writingMode: "vertical-rl" }}>
+        <div
+          className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-10 items-center gap-6 rotate-180"
+          style={{ writingMode: "vertical-rl" }}
+        >
           <span className="text-xs uppercase tracking-[0.5em] text-gold/80">
             {t("sideRail.madeIn", locale)}
           </span>
@@ -299,16 +378,16 @@ function Index() {
       <section id="historia" className="py-28 md:py-40" data-bg="oklch(0.14 0.02 50)">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">{t("story.label", locale)}</p>
+            <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">
+              {t("story.label", locale)}
+            </p>
             <h2 className="font-display text-5xl md:text-6xl leading-[1] tracking-tight">
               {t("story.title1", locale)}
               <br />
               <span className="italic text-gold-bright">{t("story.title2", locale)}</span>
             </h2>
             <div className="mt-10 text-muted-foreground text-lg leading-relaxed max-w-lg">
-              <p>
-                {t("story.body", locale)}
-              </p>
+              <p>{t("story.body", locale)}</p>
             </div>
           </div>
           <ProductGallery locale={locale} />
@@ -316,16 +395,22 @@ function Index() {
       </section>
 
       {/* Formas */}
-      <section id="formas" className="py-28 md:py-40 bg-card/40 border-y border-border/40" data-bg="oklch(0.20 0.025 70)">
+      <section
+        id="formas"
+        className="py-28 md:py-40 bg-card/40 border-y border-border/40"
+        data-bg="oklch(0.20 0.025 70)"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-2xl mb-16">
-            <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">{t("ways.label", locale)}</p>
-            <h2 className="font-display text-5xl md:text-6xl leading-[1] tracking-tight">
-              {t("ways.titlePre", locale)}<span className="italic text-gold-bright">{t("ways.titleItalic", locale)}</span>{t("ways.titleSuffix", locale)}
-            </h2>
-            <p className="mt-6 text-muted-foreground text-lg">
-              {t("ways.subtitle", locale)}
+            <p className="text-xs uppercase tracking-[0.4em] text-gold mb-6">
+              {t("ways.label", locale)}
             </p>
+            <h2 className="font-display text-5xl md:text-6xl leading-[1] tracking-tight">
+              {t("ways.titlePre", locale)}
+              <span className="italic text-gold-bright">{t("ways.titleItalic", locale)}</span>
+              {t("ways.titleSuffix", locale)}
+            </h2>
+            <p className="mt-6 text-muted-foreground text-lg">{t("ways.subtitle", locale)}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {ways.map((w, i) => {
@@ -343,7 +428,11 @@ function Index() {
                     whileInView={{ opacity: 1, y: 0 }}
                     whileHover={{ scale: 1.02 }}
                     viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.6, delay: i * 0.1, scale: { duration: 0.1, ease: [0.25, 0.45, 0.45, 0.95] } }}
+                    transition={{
+                      duration: 0.6,
+                      delay: i * 0.1,
+                      scale: { duration: 0.1, ease: [0.25, 0.45, 0.45, 0.95] },
+                    }}
                     className="relative w-full h-full overflow-hidden border border-gold/30 hover:border-gold"
                   >
                     <div
@@ -355,7 +444,9 @@ function Index() {
                     <div className="h-full flex flex-col justify-between p-8 relative z-0">
                       <div className="flex justify-between items-start">
                         <Icon className="w-8 h-8 text-gold" strokeWidth={1} />
-                        <span className="text-xs uppercase tracking-[0.3em] text-foreground/40">0{i + 1}</span>
+                        <span className="text-xs uppercase tracking-[0.3em] text-foreground/40">
+                          0{i + 1}
+                        </span>
                       </div>
                       <div>
                         <h3 className="font-display text-2xl mb-2">{w.title}</h3>
@@ -381,9 +472,13 @@ function Index() {
           }}
         />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs uppercase tracking-[0.4em] text-gold mb-8">{t("contact.label", locale)}</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-gold mb-8">
+            {t("contact.label", locale)}
+          </p>
           <h2 className="font-display text-5xl md:text-7xl leading-[1] tracking-tight mb-12">
-            {t("contact.titlePre", locale)}<span className="italic text-gold-bright">{t("contact.titleItalic", locale)}</span>{t("contact.titleSuffix", locale)}
+            {t("contact.titlePre", locale)}
+            <span className="italic text-gold-bright">{t("contact.titleItalic", locale)}</span>
+            {t("contact.titleSuffix", locale)}
           </h2>
           <div>
             <motion.a
@@ -400,9 +495,36 @@ function Index() {
             <MapPin className="w-4 h-4" strokeWidth={1.5} />
             Miami, Florida
           </div>
-          <div className="mt-16 space-y-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            <p>{t("contact.distributorAmerica", locale)}</p>
-            <p>{t("contact.distributorEurope", locale)}</p>
+          <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12">
+            <a
+              href="https://deliflow.us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <img
+                src={deliflowImg}
+                alt="Deliflow"
+                width={1920}
+                height={1440}
+                className="h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+              />
+              <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                {t("contact.distributorAmerica", locale)}
+              </span>
+            </a>
+            <div className="flex items-center gap-3">
+              <img
+                src={effeImg}
+                alt="2EFFE S.A.S"
+                width={1920}
+                height={1440}
+                className="h-10 w-auto brightness-150"
+              />
+              <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+                {t("contact.distributorEurope", locale)}
+              </span>
+            </div>
           </div>
         </div>
       </section>

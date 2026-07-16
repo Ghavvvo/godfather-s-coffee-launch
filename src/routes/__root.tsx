@@ -21,9 +21,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">{t("404.title", locale)}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("404.subtitle", locale)}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("404.subtitle", locale)}</p>
         <div className="mt-6">
           <Link
             to="/"
@@ -48,9 +46,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {t("error.title", locale)}
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {t("error.subtitle", locale)}
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("error.subtitle", locale)}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -79,10 +75,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "El Café del Padrino — Gentleman's Roast" },
-      { name: "description", content: "El café de la familia. Espresso 100% café puro, tostado meticulosamente para honrar la tradición." },
+      {
+        name: "description",
+        content:
+          "El café de la familia. Espresso 100% café puro, tostado meticulosamente para honrar la tradición.",
+      },
       { name: "author", content: "The Godfather's Coffee" },
       { property: "og:title", content: "El Café del Padrino — Gentleman's Roast" },
-      { property: "og:description", content: "El café de la familia. Espresso 100% café puro, tostado meticulosamente para honrar la tradición." },
+      {
+        property: "og:description",
+        content:
+          "El café de la familia. Espresso 100% café puro, tostado meticulosamente para honrar la tradición.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

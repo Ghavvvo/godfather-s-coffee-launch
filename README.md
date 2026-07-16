@@ -52,7 +52,7 @@ src/
 
 ## Remotes
 
-- `origin`  → github.com/Ghavvvo/godfather-s-coffee-launch.git
+- `origin` → github.com/Ghavvvo/godfather-s-coffee-launch.git
 - `origin2` → github.com/javier-sotolongo/cafe_el_padrino.git
 
 ## Licencia
